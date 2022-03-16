@@ -1,7 +1,5 @@
 package projekt.food;
 
-import java.util.function.UnaryOperator;
-
 public interface IceCream extends Food {
     /**
      * This method returns the flavor of the ice cream
