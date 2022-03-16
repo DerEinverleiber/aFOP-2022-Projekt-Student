@@ -54,4 +54,5 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
     public double getDiameter() {
         return diameter;
     }
+
 }

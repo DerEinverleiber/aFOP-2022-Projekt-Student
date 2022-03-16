@@ -1,6 +1,6 @@
 package projekt.base;
 
-class ChessboardDistanceCalculator implements DistanceCalculator{
+public class ChessboardDistanceCalculator implements DistanceCalculator{
     /**
      * This method calculates the distance induced by the chessboard distance
      * @param loc1 first Location
