@@ -7,5 +7,5 @@ public interface Saucable extends Food {
      */
     String getSauce();
 
-    //HALLO
+    //HALLO 2.0
 }
