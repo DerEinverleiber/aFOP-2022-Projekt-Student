@@ -9,7 +9,7 @@ public interface Saucable extends Food {
      */
     String getSauce();
 
-    interface Config extends Food.Config{
+    interface Config extends Food.Config {
         /**
          * sets the UnaryOperator for sauce with the String describing the sauce
          * @param unaryOperator the UnaryOperator
@@ -21,5 +21,13 @@ public interface Saucable extends Food {
          */
         UnaryOperator<String> getSauceMutator();
 
+    }
+
+    interface Variant extends Food.Variant {
+        /**
+         * Returns the baseSauce
+         * @return baseSauce as String
+         */
+        String getBaseSauce();
     }
 }

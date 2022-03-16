@@ -7,7 +7,7 @@ public interface IceCream extends Food {
      * @return flavor of the ice cream as String
      */
     String getFlavor();
-    interface Config extends Food.Config{
+    interface Config extends Food.Config {
         /**
          * sets the UnaryOperator for the flavor with the String describing the flavor
          * @param unaryOperator the UnaryOperator
@@ -19,5 +19,13 @@ public interface IceCream extends Food {
          * @return the chain of all given operators as operator
          */
         UnaryOperator<String> getFlavorMutator();
+    }
+
+    interface Variant extends Food.Variant {
+        /**
+         * This method returns the base flavor
+         * @return baseFlavor as String
+         */
+        String getBaseFlavor();
     }
 }

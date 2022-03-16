@@ -3,11 +3,11 @@ package projekt.food;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class PizzaImpl extends AbstractSaucable implements Pizza {
+public class PastaImpl extends AbstractSaucable implements Pasta {
 
     protected final Food.Variant<?, ?> foodVariant;
     protected final List<? extends Extra<?>> extras;
-    protected final double diameter;
+    protected final double thickness;
 
     /**
      * This constructor assigns its parameters to the class' attributes
@@ -17,11 +17,11 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
      * @param foodVariant Food.Variant<?, ?> food variant
      * @param extras List<? extends Extra<?>> extras
      */
-    public PizzaImpl(String sauce, BigDecimal price, double weight, Food.Variant<?, ?> foodVariant, List<? extends Extra<?>> extras, double diameter){
+    public PastaImpl(String sauce, BigDecimal price, double weight, Food.Variant<?, ?> foodVariant, List<? extends Extra<?>> extras, double thickness){
         super(sauce, price, weight);
         this.foodVariant = foodVariant;
         this.extras = extras;
-        this.diameter = diameter;
+        this.thickness = thickness;
     }
 
     /**
@@ -44,14 +44,13 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
         return extras;
     }
 
-
     /**
-     * This method returns the diameter of the pizza
+     * This method returns the thickness of the noodles
      *
-     * @return diameter of type double
+     * @return thickness of the noddles as double
      */
     @Override
-    public double getDiameter() {
-        return diameter;
+    public double getThickness() {
+        return thickness;
     }
 }

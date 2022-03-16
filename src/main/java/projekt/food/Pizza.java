@@ -8,7 +8,7 @@ public interface Pizza extends Saucable {
      * @return diameter of type double
      */
     double getDiameter();
-    interface Config extends Saucable.Config{
+    interface Config extends Saucable.Config {
         /**
          * sets the UnaryOperator for diameter with the double describing the diameter
          * @param unaryOperator the UnaryOperator
@@ -19,5 +19,12 @@ public interface Pizza extends Saucable {
          * @return the chain of all given operators as operator
          */
         DoubleUnaryOperator getDiameterMutator();
+    }
+    interface Variant extends Saucable.Variant {
+        /**
+         * This method returns the base diameter
+         * @return baseDiameter as double
+         */
+        double getBaseDiameter();
     }
 }

@@ -8,7 +8,7 @@ public interface Pasta extends Saucable {
      * @return thickness of the noddles as double
      */
     double getThickness();
-    interface Config extends Saucable.Config{
+    interface Config extends Saucable.Config {
         /**
          * sets the UnaryOperator for thickness with the double describing the thickness
          * @param unaryOperator the UnaryOperator
@@ -19,5 +19,13 @@ public interface Pasta extends Saucable {
          * @return the chain of all given operators as operator
          */
         DoubleUnaryOperator getThicknessMutator();
+    }
+
+    interface Variant extends Saucable.Variant {
+        /**
+         * This method returns the base thickness
+         * @return baseThickness as double
+         */
+        double getBaseThickness();
     }
 }
