@@ -6,4 +6,6 @@ public interface Saucable extends Food {
      * @return String regarding the sauce
      */
     String getSauce();
+
+    //HALLO
 }
