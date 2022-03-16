@@ -10,7 +10,10 @@ public interface Saucable extends Food {
     String getSauce();
 
     interface Config extends Food.Config{
-
+        /**
+         *
+         * @param unaryOperator
+         */
         void sauce(UnaryOperator<String> unaryOperator);
         /**
          * returns the chain of all given operators as operator
