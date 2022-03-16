@@ -1,6 +1,6 @@
 package projekt.base;
 
-class EuclideanDistanceCalculator implements DistanceCalculator {
+public class EuclideanDistanceCalculator implements DistanceCalculator {
     /**
      * This implementation returns the distance of loc1 and loc2 using the euclidean norm
      * @param loc1 first Location

@@ -18,7 +18,7 @@ public class Location {
      * Method to get the y coordinate
      * @return y coordinate
      */
-    int getY() {
+    public int getY() {
         return y;
     }
 
@@ -26,7 +26,7 @@ public class Location {
      * Method to get the x coordinate
      * @return x coordinate
      */
-    int getX() {
+    public int getX() {
         return x;
     }
 
@@ -35,7 +35,7 @@ public class Location {
      * @param location the 2nd location for summation
      * @return the sum of the two locations
      */
-    Location add(Location location){
+    public Location add(Location location){
         return new Location(location.getX()+this.getX(), location.getY()+this.getY() );
     }
 
@@ -44,7 +44,7 @@ public class Location {
      * @param location the 2nd location for subtraction (the subtrahend)
      * @return the difference of the two locations
      */
-    Location subtract(Location location) {
+    public Location subtract(Location location) {
         return new Location(getX() - location.getX(), getY() - location.getY());
     }
 
