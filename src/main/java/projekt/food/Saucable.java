@@ -1,5 +1,7 @@
 package projekt.food;
 
+import java.util.function.UnaryOperator;
+
 public interface Saucable extends Food {
     /**
      * This method returns the type of sauce
@@ -7,5 +9,14 @@ public interface Saucable extends Food {
      */
     String getSauce();
 
-    //HALLO 2.0
+    interface Config extends Food.Config{
+
+        void sauce(UnaryOperator<String> unaryOperator);
+        /**
+         * returns the chain of all given operators as operator
+         * @return the chain of all given operators as operator
+         */
+        UnaryOperator<String> getSauceMutator();
+
+    }
 }
