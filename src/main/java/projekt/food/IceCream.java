@@ -1,4 +1,5 @@
 package projekt.food;
+import java.util.function.UnaryOperator;
 
 public interface IceCream extends Food {
     /**
