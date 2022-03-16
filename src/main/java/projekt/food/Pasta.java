@@ -9,6 +9,10 @@ public interface Pasta extends Saucable {
      */
     double getThickness();
     interface Config extends Saucable.Config{
+        /**
+         * sets the UnaryOperator for thickness with the double describing the thickness
+         * @param unaryOperator the UnaryOperator
+         */
         void thickness(DoubleUnaryOperator unaryOperator);
         /**
          * returns the chain of all given operators as operator

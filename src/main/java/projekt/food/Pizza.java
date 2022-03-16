@@ -9,6 +9,10 @@ public interface Pizza extends Saucable {
      */
     double getDiameter();
     interface Config extends Saucable.Config{
+        /**
+         * sets the UnaryOperator for diameter with the double describing the diameter
+         * @param unaryOperator the UnaryOperator
+         */
         void diameter(DoubleUnaryOperator unaryOperator);
         /**
          * returns the chain of all given operators as operator

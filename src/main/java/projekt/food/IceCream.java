@@ -8,6 +8,10 @@ public interface IceCream extends Food {
      */
     String getFlavor();
     interface Config extends Food.Config{
+        /**
+         * sets the UnaryOperator for the flavor with the String describing the flavor
+         * @param unaryOperator the UnaryOperator
+         */
         void flavor(UnaryOperator<String> unaryOperator);
 
         /**

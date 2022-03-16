@@ -11,8 +11,8 @@ public interface Saucable extends Food {
 
     interface Config extends Food.Config{
         /**
-         *
-         * @param unaryOperator
+         * sets the UnaryOperator for sauce with the String describing the sauce
+         * @param unaryOperator the UnaryOperator
          */
         void sauce(UnaryOperator<String> unaryOperator);
         /**
