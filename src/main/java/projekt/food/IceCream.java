@@ -6,5 +6,5 @@ public interface IceCream extends Food {
      * @return flavor of the ice cream as String
      */
     String getFlavor();
-    //moin
+    //moina
 }
