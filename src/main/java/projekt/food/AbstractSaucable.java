@@ -53,12 +53,18 @@ abstract public class AbstractSaucable implements Saucable {
         return weight;
     }
 
-    private static class Config implements Saucable.Config {
-        private UnaryOperator<BigDecimal> priceMutator;
-        private DoubleUnaryOperator weightMutator;
-        private UnaryOperator<String> sauceOperator;
+    protected static class Config implements Saucable.Config {
+        protected UnaryOperator<BigDecimal> priceMutator;
+        protected DoubleUnaryOperator weightMutator;
+        protected UnaryOperator<String> sauceOperator;
 
-        private Config(UnaryOperator<BigDecimal> priceMutator, DoubleUnaryOperator weightMutator, UnaryOperator<String> sauceOperator) {
+        /**
+         * This constructor assigns its parameters to the class' attributes
+         * @param priceMutator UnaryOperator<BigDecimal>
+         * @param weightMutator DoubleUnaryOperator
+         * @param sauceOperator UnaryOperator<String>
+         */
+        protected Config(UnaryOperator<BigDecimal> priceMutator, DoubleUnaryOperator weightMutator, UnaryOperator<String> sauceOperator) {
         this.priceMutator = priceMutator;
         this.weightMutator = weightMutator;
         this.sauceOperator = sauceOperator;

@@ -2,6 +2,8 @@ package projekt.food;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.function.DoubleUnaryOperator;
+import java.util.function.UnaryOperator;
 
 public class PastaImpl extends AbstractSaucable implements Pasta {
 
@@ -52,5 +54,33 @@ public class PastaImpl extends AbstractSaucable implements Pasta {
     @Override
     public double getThickness() {
         return thickness;
+    }
+
+    private static class Config extends AbstractSaucable.Config implements Pasta.Config {
+        private DoubleUnaryOperator unaryOperator;
+        private Config(UnaryOperator<BigDecimal> priceMutator, DoubleUnaryOperator weightMutator, UnaryOperator<String> sauceOperator, DoubleUnaryOperator unaryOperator) {
+            super(priceMutator, weightMutator, sauceOperator);
+            this.unaryOperator = unaryOperator;
+        }
+
+        /**
+         * sets the UnaryOperator for thickness with the double describing the thickness
+         *
+         * @param unaryOperator the UnaryOperator
+         */
+        @Override
+        public void thickness(DoubleUnaryOperator unaryOperator) {
+            this.unaryOperator = this.unaryOperator.compose(unaryOperator);
+        }
+
+        /**
+         * returns the chain of all given operators as operator
+         *
+         * @return the chain of all given operators as operator
+         */
+        @Override
+        public DoubleUnaryOperator getThicknessMutator() {
+            return unaryOperator;
+        }
     }
 }

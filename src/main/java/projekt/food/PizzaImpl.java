@@ -2,6 +2,8 @@ package projekt.food;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.function.DoubleUnaryOperator;
+import java.util.function.UnaryOperator;
 
 public class PizzaImpl extends AbstractSaucable implements Pizza {
 
@@ -55,4 +57,31 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
         return diameter;
     }
 
+    private static class Config extends AbstractSaucable.Config implements Pizza.Config  {
+        private DoubleUnaryOperator unaryOperator;
+
+        private Config(UnaryOperator<BigDecimal> priceMutator, DoubleUnaryOperator weightMutator, UnaryOperator<String> sauceOperator, DoubleUnaryOperator unaryOperator) {
+          super(priceMutator, weightMutator, sauceOperator);
+          this.unaryOperator = unaryOperator;
+        }
+        /**
+         * sets the UnaryOperator for diameter with the double describing the diameter
+         *
+         * @param unaryOperator the UnaryOperator
+         */
+        @Override
+        public void diameter(DoubleUnaryOperator unaryOperator) {
+            this.unaryOperator = this.unaryOperator.compose(unaryOperator);
+        }
+
+        /**
+         * returns the chain of all given operators as operator
+         *
+         * @return the chain of all given operators as operator
+         */
+        @Override
+        public DoubleUnaryOperator getDiameterMutator() {
+            return unaryOperator;
+        }
+    }
 }
