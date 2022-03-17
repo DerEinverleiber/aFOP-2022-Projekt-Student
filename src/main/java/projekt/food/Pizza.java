@@ -20,7 +20,7 @@ public interface Pizza extends Saucable {
          */
         DoubleUnaryOperator getDiameterMutator();
     }
-    interface Variant extends Saucable.Variant {
+    interface Variant<F extends Pizza,C extends Pizza.Config> extends Saucable.Variant<F,C> {
         /**
          * This method returns the base diameter
          * @return baseDiameter as double

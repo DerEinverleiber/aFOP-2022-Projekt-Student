@@ -21,7 +21,7 @@ public interface IceCream extends Food {
         UnaryOperator<String> getFlavorMutator();
     }
 
-    interface Variant extends Food.Variant {
+    interface Variant<F extends IceCream,C extends IceCream.Config> extends Food.Variant<F,C> {
         /**
          * This method returns the base flavor
          * @return baseFlavor as String
