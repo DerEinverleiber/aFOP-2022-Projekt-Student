@@ -23,7 +23,7 @@ public interface Saucable extends Food {
 
     }
 
-    interface Variant extends Food.Variant {
+    interface Variant<F extends Food, C extends Config> extends Food.Variant<F,C> {
         /**
          * Returns the baseSauce
          * @return baseSauce as String

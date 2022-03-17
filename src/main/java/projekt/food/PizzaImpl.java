@@ -11,6 +11,8 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
     protected final List<? extends Extra<?>> extras;
     protected final double diameter;
 
+
+
     /**
      * This constructor assigns its parameters to the class' attributes
      * @param sauce String sauce
