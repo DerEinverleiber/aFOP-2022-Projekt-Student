@@ -11,7 +11,8 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
     protected final List<? extends Extra<?>> extras;
     protected final double diameter;
     final static FoodBuilder<Pizza,Food.Config,Food.Variant<Pizza,Food.Config>> BUILDER= (config, variant, compatibleExtras) -> new PizzaImpl("Tomato",variant.getBasePrice(), variant.getBaseWeight(), variant,compatibleExtras,28);
-
+    // TODO H2.11 Builder
+    // auch noch in den anderen Food Klassen
 
     /**
      * This constructor assigns its parameters to the class' attributes

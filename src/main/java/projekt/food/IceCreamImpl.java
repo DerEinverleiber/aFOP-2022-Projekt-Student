@@ -12,6 +12,8 @@ public class IceCreamImpl implements IceCream {
     protected final Food.Variant<?, ?> foodVariant;
     protected final List<? extends Extra<?>> extras;
     protected final String flavor;
+    //TODO Zeile unter mir flavor
+    final static FoodBuilder<IceCream,Food.Config,Food.Variant<IceCream,Food.Config>> BUILDER= (config, variant, compatibleExtras) -> new IceCreamImpl(variant.getBasePrice(), variant.getBaseWeight(), variant,compatibleExtras,"vergammelt");
 
     /**
      * This constructor assigns its parameters to the class' attributes
@@ -168,6 +170,95 @@ public class IceCreamImpl implements IceCream {
         @Override
         public UnaryOperator<String> getFlavorMutator() {
             return unaryOperator;
+        }
+    }
+    static class Variant<F extends IceCream,C extends Config> implements Food.Variant<IceCreamImpl,IceCreamImpl.Config> {
+        public Variant(String name,FoodType<IceCreamImpl, Config> foodType,BigDecimal basePrice,double baseWeight){
+            this.name = name;
+            this.foodType=foodType;
+            this.basePrice=basePrice;
+            this.baseWeight=baseWeight;
+        }
+        private final String name;
+        private final FoodType<IceCreamImpl, Config> foodType;
+        private final BigDecimal basePrice;
+        private final double baseWeight;
+
+        /**
+         * The name of this variant.
+         *
+         * <p>
+         * This may be something similar to {@code "Pizza Margherita"}.
+         * </p>
+         *
+         * @return The name of this variant
+         */
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        /**
+         * The food type in which this variant is grouped.
+         *
+         * <p>
+         * For example, if this variant was named {@code "Pizza Margherita"}, the matching food type would be {@code "Pizza"}.
+         * </p>
+         *
+         * @return The food type of this variant
+         */
+        @Override
+        public FoodType<IceCreamImpl, Config> getFoodType() {
+            return foodType;
+        }
+
+        /**
+         * The base price of this variant.
+         *
+         * @return The base price of this variant
+         */
+        @Override
+        public BigDecimal getBasePrice() {
+            return basePrice;
+        }
+
+        /**
+         * The base weight of this variant.
+         *
+         * @return The weight price of this variant
+         */
+        @Override
+        public double getBaseWeight() {
+            return baseWeight;
+        }
+        //TODO da
+        /**
+         * Creates an empty {@link Config} for this variant.
+         *
+         * @return An empty {@link Config} for this variant
+         */
+        @Override
+        public Config createEmptyConfig() {
+            return null;
+        }
+
+        /**
+         * Creates a new instance of {@link Food} described by this variant, its base values and modifications defined by the
+         * provided list of {@link Extra Extras}.
+         *
+         * <p>
+         * The provided extras are {@link Extra#apply(Config) applied} to an instance of {@link Config}. After this config has
+         * been fully "configured" by the extras, the base values from this variant are supplied to the config's mutators to
+         * calculate the food's concrete values. Providing an empty list will create a food with the base values for this
+         * variant.
+         * </p>
+         *
+         * @param extras The list of {@link Extra Extras} to configure the resultant {@link Food}
+         * @return An instance of {@link Food} based on the values from this variant and configured by the provided extras
+         */
+        @Override
+        public IceCreamImpl create(List<? extends Extra<? super Config>> extras) {
+
         }
     }
 }
