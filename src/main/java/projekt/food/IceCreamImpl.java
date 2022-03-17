@@ -258,7 +258,7 @@ public class IceCreamImpl implements IceCream {
          */
         @Override
         public IceCreamImpl create(List<? extends Extra<? super Config>> extras) {
-
+            return null;
         }
     }
 }
