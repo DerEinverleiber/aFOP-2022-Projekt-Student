@@ -4,7 +4,7 @@ import projekt.food.Food.Config;
 
 import java.util.function.Consumer;
 
-public class ExtraImpl<C extends Food.Config> implements Extra{
+public class ExtraImpl<C extends Food.Config> implements Extra<C>{
     /**
      * the ExtraImpl constructor initializes all object constants
      * @param name String representing the name
