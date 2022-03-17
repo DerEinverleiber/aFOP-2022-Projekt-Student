@@ -11,7 +11,7 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
     protected final List<? extends Extra<?>> extras;
     protected final double diameter;
     final static FoodBuilder<Pizza,Food.Config,Food.Variant<Pizza,Food.Config>> BUILDER= (config, variant, compatibleExtras) -> new PizzaImpl(variant.getName().equals("BBQ")?"BBQ":"Tomato",variant.getBasePrice(), variant.getBaseWeight(), variant,compatibleExtras,30);
-    // TODO H2.11 Hardcode entfernen
+    // TODO H2.11 Hardcode entfernen in obiger Zeile
 
 
     /**
