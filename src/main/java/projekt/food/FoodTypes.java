@@ -21,8 +21,7 @@ public final class FoodTypes {
     public static final FoodType PASTA = new FoodTypeImpl("Pasta",Arrays.stream(extrasPasta).collect(Collectors.toList()));
     private static final Extra[] extrasIceCream = {Extras.RAINBOW_SPRINKLES,Extras.EXTRA_SCOOP,Extras.JUMBO_SCHREINER_SIZED,Extras.EXTRA_SALT,Extras.EXTRA_SPOON,Extras.EXTRA_CARBONATED,Extras.EXTRA_EXPIRED};
     public static final FoodType ICE_CREAM = new FoodTypeImpl("Ice Cream", Arrays.stream(extrasIceCream).collect(Collectors.toList()));
-    //public static final Map @DerEinverleiber H2.10
-    //TODO s.o.
+
     public static final Map<String,FoodType> ALL = new HashMap<>();
 
     static {

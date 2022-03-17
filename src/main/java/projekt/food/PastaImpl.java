@@ -10,6 +10,7 @@ public class PastaImpl extends AbstractSaucable implements Pasta {
     protected final Food.Variant<?, ?> foodVariant;
     protected final List<? extends Extra<?>> extras;
     protected final double thickness;
+    final static FoodBuilder<Pasta,Food.Config,Food.Variant<Pasta,Food.Config>> BUILDER= (config, variant, compatibleExtras) -> new PastaImpl(null,variant.getBasePrice(),variant.getBaseWeight(),variant,compatibleExtras,2);
 
     /**
      * This constructor assigns its parameters to the class' attributes
