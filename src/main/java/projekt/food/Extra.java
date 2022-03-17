@@ -1,6 +1,10 @@
 package projekt.food;
 
 
+import java.awt.*;
+import java.util.Comparator;
+import java.util.List;
+
 /**
  * A modification that targets configurable values in a {@link Food.Config}.
  *
@@ -28,4 +32,19 @@ public interface Extra<C extends Food.Config> {
      * @param config {@link Food.Config} to modify
      */
     void apply(C config);
+
+    static <C> void writeToConfig(C config, List<? extends Extra<? extends Food.Config>> extras){
+        Comparator<Extra<? extends Food.Config>> comparator= (Extra<? extends Food.Config> x,Extra<? extends Food.Config> y)-> {
+            if(x.getPriority()<y.getPriority()){
+                return -1;
+            }
+            else if(x.getPriority()>y.getPriority()){
+                return 1;
+            }else {
+                return x.getName().compareTo(y.getName());
+            }
+        };
+        extras.sort(comparator);
+        //extras.forEach(extra -> extra.apply(config));
+    };
 }
