@@ -34,6 +34,7 @@ public interface Extra<C extends Food.Config> {
     void apply(C config);
 
     static <C> void writeToConfig(C config, List<? extends Extra<? extends Food.Config>> extras){
+        List<? extends Extra<? extends Food.Config>> extrasStore=extras;
         Comparator<Extra<? extends Food.Config>> comparator= (Extra<? extends Food.Config> x,Extra<? extends Food.Config> y)-> {
             if(x.getPriority()<y.getPriority()){
                 return -1;
@@ -46,5 +47,6 @@ public interface Extra<C extends Food.Config> {
         };
         extras.sort(comparator);
         //extras.forEach(extra -> extra.apply(config));
+        extras=extrasStore;
     };
 }
