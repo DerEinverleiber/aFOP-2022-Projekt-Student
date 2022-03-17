@@ -13,7 +13,7 @@ public class IceCreamImpl implements IceCream {
     protected final List<? extends Extra<?>> extras;
     protected final String flavor;
     //TODO Zeile unter mir flavor
-    final static FoodBuilder<IceCream,Food.Config,Food.Variant<IceCream,Food.Config>> BUILDER= (config, variant, compatibleExtras) -> new IceCreamImpl(variant.getBasePrice(), variant.getBaseWeight(), variant,compatibleExtras,"vergammelt");
+    final static FoodBuilder<IceCream,Food.Config,Food.Variant<IceCream,Food.Config>> BUILDER= (config, variant, compatibleExtras) -> new IceCreamImpl(variant.getBasePrice(), variant.getBaseWeight(), variant,compatibleExtras, variant.getName());
 
     /**
      * This constructor assigns its parameters to the class' attributes
