@@ -33,9 +33,16 @@ public interface Extra<C extends Food.Config> {
      */
     void apply(C config);
 
-    static <C> void writeToConfig(C config, List<? extends Extra<? extends Food.Config>> extras){
-        List<? extends Extra<? extends Food.Config>> extrasStore=extras;
-        Comparator<Extra<? extends Food.Config>> comparator= (Extra<? extends Food.Config> x,Extra<? extends Food.Config> y)-> {
+    /**
+     * applies method apply on each element, in the priority order
+     * if the priority order is the same, it is sorting in alphabetical order
+     * @param config the Food config
+     * @param extras the Extras
+     * @param <C> extends Food Config
+     */
+    static <C> void writeToConfig(C config, List<? extends Extra<? super C>> extras){
+        List<? extends Extra<? super C>> extrasStore=extras;
+        Comparator<Extra<? super C>> comparator= (Extra<? super C> x,Extra<? super C> y)-> {
             if(x.getPriority()<y.getPriority()){
                 return -1;
             }
@@ -46,7 +53,7 @@ public interface Extra<C extends Food.Config> {
             }
         };
         extras.sort(comparator);
-        //extras.forEach(extra -> extra.apply(config));
+        extras.forEach(extra -> extra.apply(config));
         extras=extrasStore;
     };
 }
