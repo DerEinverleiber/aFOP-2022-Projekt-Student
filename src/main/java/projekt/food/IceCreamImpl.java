@@ -173,6 +173,13 @@ public class IceCreamImpl implements IceCream {
         }
     }
     static class Variant<F extends IceCream,C extends Config> implements Food.Variant<IceCreamImpl,IceCreamImpl.Config> {
+        /**
+         * The constructor initializes the parameters
+         * @param name the name
+         * @param foodType the foodType
+         * @param basePrice the basePrice
+         * @param baseWeight the baseWeight
+         */
         public Variant(String name,FoodType<IceCreamImpl, Config> foodType,BigDecimal basePrice,double baseWeight){
             this.name = name;
             this.foodType=foodType;

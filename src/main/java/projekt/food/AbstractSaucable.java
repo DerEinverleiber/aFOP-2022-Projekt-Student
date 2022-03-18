@@ -152,4 +152,100 @@ abstract public class AbstractSaucable implements Saucable {
             return sauceOperator;
         }
     }
+
+    public static abstract class Variant<F extends AbstractSaucable, C extends Config> implements Food.Variant<AbstractSaucable,Config>{
+        /**
+         * The constructor initializes the parameters
+         * @param name the name
+         * @param foodType the foodType
+         * @param basePrice the basePrice
+         * @param baseWeight the baseWeight
+         */
+        public Variant(String name, FoodType<AbstractSaucable, AbstractSaucable.Config> foodType, BigDecimal basePrice, double baseWeight){
+            this.name = name;
+            this.foodType=foodType;
+            this.basePrice=basePrice;
+            this.baseWeight=baseWeight;
+        }
+        private final String name;
+        private final FoodType<AbstractSaucable, AbstractSaucable.Config> foodType;
+        private final BigDecimal basePrice;
+        private final double baseWeight;
+        /**
+         * The name of this variant.
+         *
+         * <p>
+         * This may be something similar to {@code "Pizza Margherita"}.
+         * </p>
+         *
+         * @return The name of this variant
+         */
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        /**
+         * The food type in which this variant is grouped.
+         *
+         * <p>
+         * For example, if this variant was named {@code "Pizza Margherita"}, the matching food type would be {@code "Pizza"}.
+         * </p>
+         *
+         * @return The food type of this variant
+         */
+        @Override
+        public FoodType<AbstractSaucable, Config> getFoodType() {
+            return foodType;
+        }
+
+        /**
+         * The base price of this variant.
+         *
+         * @return The base price of this variant
+         */
+        @Override
+        public BigDecimal getBasePrice() {
+            return basePrice;
+        }
+
+        /**
+         * The base weight of this variant.
+         *
+         * @return The weight price of this variant
+         */
+        @Override
+        public double getBaseWeight() {
+            return baseWeight;
+        }
+
+        /**
+         * Creates an empty {@link Config} for this variant.
+         *
+         * @return An empty {@link Config} for this variant
+         */
+        @Override
+        public C createEmptyConfig() {
+            return null;
+        }
+
+        /**
+         * Creates a new instance of {@link Food} described by this variant, its base values and modifications defined by the
+         * provided list of {@link Extra Extras}.
+         *
+         * <p>
+         * The provided extras are {@link Extra#apply(Config) applied} to an instance of {@link Config}. After this config has
+         * been fully "configured" by the extras, the base values from this variant are supplied to the config's mutators to
+         * calculate the food's concrete values. Providing an empty list will create a food with the base values for this
+         * variant.
+         * </p>
+         *
+         * @param extras The list of {@link Extra Extras} to configure the resultant {@link Food}
+         * @return An instance of {@link Food} based on the values from this variant and configured by the provided extras
+         */
+        @Override
+        public F create(List<? extends Extra<? super C>> extras) {
+            return null;
+        }
+    }
 }

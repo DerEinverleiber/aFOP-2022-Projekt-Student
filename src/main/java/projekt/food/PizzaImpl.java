@@ -60,13 +60,14 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
         return diameter;
     }
 
-    private static class Config extends AbstractSaucable.Config implements Pizza.Config  {
+    private static class Config extends AbstractSaucable.Config implements Pizza.Config {
         private DoubleUnaryOperator unaryOperator;
 
         private Config(UnaryOperator<BigDecimal> priceMutator, DoubleUnaryOperator weightMutator, UnaryOperator<String> sauceOperator, DoubleUnaryOperator unaryOperator) {
-          super(priceMutator, weightMutator, sauceOperator);
-          this.unaryOperator = unaryOperator;
+            super(priceMutator, weightMutator, sauceOperator);
+            this.unaryOperator = unaryOperator;
         }
+
         /**
          * sets the UnaryOperator for diameter with the double describing the diameter
          *
