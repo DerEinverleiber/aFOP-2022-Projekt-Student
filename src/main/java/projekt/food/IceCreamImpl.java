@@ -246,12 +246,7 @@ public class IceCreamImpl implements IceCream {
          */
         @Override
         public Config createEmptyConfig() {
-            return new Config(new UnaryOperator<BigDecimal>() {
-                @Override
-                public BigDecimal apply(BigDecimal bigDecimal) {
-                    return bigDecimal.add(getBasePrice());
-                }
-            }, new DoubleUnaryOperator() {
+            return new Config(bigDecimal -> bigDecimal.add(getBasePrice()), new DoubleUnaryOperator() {
                 @Override
                 public double applyAsDouble(double operand) {
                     return baseWeight + operand;

@@ -89,7 +89,7 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
         }
     }
 
-    static class Variant<F extends PizzaImpl,C extends Config> extends AbstractSaucable.Variant<PizzaImpl,Config>{
+    static class Variant<F extends PizzaImpl,C extends Config> implements Food.Variant<PizzaImpl,Config>{
         /**
          * The constructor initializes the parameters
          * @param name the name
@@ -98,8 +98,84 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
          * @param baseWeight the baseWeight
          */
         public Variant(String name, FoodType<PizzaImpl, PizzaImpl.Config> foodType, BigDecimal basePrice, double baseWeight){
-            super(name,foodType,basePrice,baseWeight);
+            this.name = name;
+            this.foodType=foodType;
+            this.basePrice=basePrice;
+            this.baseWeight=baseWeight;
         }
+        private final String name;
+        private final FoodType<PizzaImpl, PizzaImpl.Config> foodType;
+        private final BigDecimal basePrice;
+        private final double baseWeight;
+
+        /**
+         * The name of this variant.
+         *
+         * <p>
+         * This may be something similar to {@code "Pizza Margherita"}.
+         * </p>
+         *
+         * @return The name of this variant
+         */
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        /**
+         * The food type in which this variant is grouped.
+         *
+         * <p>
+         * For example, if this variant was named {@code "Pizza Margherita"}, the matching food type would be {@code "Pizza"}.
+         * </p>
+         *
+         * @return The food type of this variant
+         */
+        @Override
+        public FoodType<PizzaImpl, Config> getFoodType() {
+            return foodType;
+        }
+
+        /**
+         * The base price of this variant.
+         *
+         * @return The base price of this variant
+         */
+        @Override
+        public BigDecimal getBasePrice() {
+            return basePrice;
+        }
+
+        /**
+         * The base weight of this variant.
+         *
+         * @return The weight price of this variant
+         */
+        @Override
+        public double getBaseWeight() {
+            return baseWeight;
+        }
+
+        /**
+         * Creates an empty {@link Config} for this variant.
+         *
+         * @return An empty {@link Config} for this variant
+         */
+        @Override
+        public Config createEmptyConfig() {
+            return new PizzaImpl.Config(bigDecimal -> bigDecimal.add(getBasePrice()), new DoubleUnaryOperator() {
+                @Override
+                public double applyAsDouble(double operand) {
+                    return baseWeight + operand;
+                }
+            }, new UnaryOperator<String>() {
+                @Override
+                public String apply(String s) {
+                    return name + " " + s;
+                }
+            });
+        }
+
         /**
          * Creates a new instance of {@link Food} described by this variant, its base values and modifications defined by the
          * provided list of {@link Extra Extras}.
@@ -115,7 +191,7 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
          * @return An instance of {@link Food} based on the values from this variant and configured by the provided extras
          */
         @Override
-        public AbstractSaucable create(List<? extends Extra<? super AbstractSaucable.Config>> extras) {
+        public PizzaImpl create(List<? extends Extra<? super Config>> extras) {
             return null;
         }
     }
