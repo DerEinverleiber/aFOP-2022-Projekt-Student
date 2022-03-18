@@ -239,19 +239,27 @@ public class IceCreamImpl implements IceCream {
          */
         @Override
         public Config createEmptyConfig() {
-            return null;
+            return new Config(new UnaryOperator<BigDecimal>() {
+                @Override
+                public BigDecimal apply(BigDecimal bigDecimal) {
+                    return bigDecimal.add(getBasePrice());
+                }
+            }, new DoubleUnaryOperator() {
+                @Override
+                public double applyAsDouble(double operand) {
+                    return baseWeight + operand;
+                }
+            }, new UnaryOperator<String>() {
+                @Override
+                public String apply(String s) {
+                    return name + " " + s;
+                }
+            });
         }
 
         /**
          * Creates a new instance of {@link Food} described by this variant, its base values and modifications defined by the
          * provided list of {@link Extra Extras}.
-         *
-         * <p>
-         * The provided extras are {@link Extra#apply(Config) applied} to an instance of {@link Config}. After this config has
-         * been fully "configured" by the extras, the base values from this variant are supplied to the config's mutators to
-         * calculate the food's concrete values. Providing an empty list will create a food with the base values for this
-         * variant.
-         * </p>
          *
          * @param extras The list of {@link Extra Extras} to configure the resultant {@link Food}
          * @return An instance of {@link Food} based on the values from this variant and configured by the provided extras
