@@ -88,4 +88,35 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
             return unaryOperator;
         }
     }
+
+    static class Variant<F extends PizzaImpl,C extends Config> extends AbstractSaucable.Variant<PizzaImpl,Config>{
+        /**
+         * The constructor initializes the parameters
+         * @param name the name
+         * @param foodType the foodType
+         * @param basePrice the basePrice
+         * @param baseWeight the baseWeight
+         */
+        public Variant(String name, FoodType<PizzaImpl, PizzaImpl.Config> foodType, BigDecimal basePrice, double baseWeight){
+            super(name,foodType,basePrice,baseWeight);
+        }
+        /**
+         * Creates a new instance of {@link Food} described by this variant, its base values and modifications defined by the
+         * provided list of {@link Extra Extras}.
+         *
+         * <p>
+         * The provided extras are applied to an instance of {@link Config}. After this config has
+         * been fully "configured" by the extras, the base values from this variant are supplied to the config's mutators to
+         * calculate the food's concrete values. Providing an empty list will create a food with the base values for this
+         * variant.
+         * </p>
+         *
+         * @param extras The list of {@link Extra Extras} to configure the resultant {@link Food}
+         * @return An instance of {@link Food} based on the values from this variant and configured by the provided extras
+         */
+        @Override
+        public AbstractSaucable create(List<? extends Extra<? super AbstractSaucable.Config>> extras) {
+            return null;
+        }
+    }
 }

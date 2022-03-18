@@ -161,14 +161,14 @@ abstract public class AbstractSaucable implements Saucable {
          * @param basePrice the basePrice
          * @param baseWeight the baseWeight
          */
-        public Variant(String name, FoodType<AbstractSaucable, AbstractSaucable.Config> foodType, BigDecimal basePrice, double baseWeight){
+        public Variant(String name, FoodType<? extends AbstractSaucable, ? extends AbstractSaucable.Config> foodType, BigDecimal basePrice, double baseWeight){
             this.name = name;
             this.foodType=foodType;
             this.basePrice=basePrice;
             this.baseWeight=baseWeight;
         }
         private final String name;
-        private final FoodType<AbstractSaucable, AbstractSaucable.Config> foodType;
+        private final FoodType<? extends AbstractSaucable,? extends AbstractSaucable.Config> foodType;
         private final BigDecimal basePrice;
         private final double baseWeight;
         /**
@@ -234,7 +234,7 @@ abstract public class AbstractSaucable implements Saucable {
          * provided list of {@link Extra Extras}.
          *
          * <p>
-         * The provided extras are {@link Extra#apply(Config) applied} to an instance of {@link Config}. After this config has
+         * The provided extras are applied to an instance of {@link Config}. After this config has
          * been fully "configured" by the extras, the base values from this variant are supplied to the config's mutators to
          * calculate the food's concrete values. Providing an empty list will create a food with the base values for this
          * variant.
