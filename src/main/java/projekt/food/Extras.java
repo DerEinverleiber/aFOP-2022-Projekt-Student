@@ -21,6 +21,7 @@ public final class Extras {
     public final static Extra<IceCream.Config> EXTRA_CARBONATED = new ExtraImpl("Extra Carbonated", 3, sampleConsumer);
     public final static Extra<IceCream.Config> EXTRA_EXPIRED = new ExtraImpl("Extra Expired", 2, sampleConsumer);
 
+
     private Extras() {
         ALL.put("Extra Ham", EXTRA_HAM);
         ALL.put("Extra Olives", EXTRA_OLIVES);

@@ -51,5 +51,6 @@ public class ExtraImpl<C extends Food.Config> implements Extra<C>{
     @Override
     public void apply(Food.Config config) {
         //TODO
+        //config.price();
     }
 }
