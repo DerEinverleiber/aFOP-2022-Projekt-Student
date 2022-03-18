@@ -89,7 +89,7 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
         }
     }
 
-    static class Variant<F extends PizzaImpl,C extends Config> implements Pizza.Variant{
+    static class Variant<F extends PizzaImpl,C extends Config> implements Pizza.Variant<PizzaImpl,Config>{
         /**
          * The constructor initializes the parameters
          * @param name the name
