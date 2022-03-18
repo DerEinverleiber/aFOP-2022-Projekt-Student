@@ -174,17 +174,17 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
             return new PizzaImpl.Config(bigDecimal -> bigDecimal.add(getBasePrice()), new DoubleUnaryOperator() {
                 @Override
                 public double applyAsDouble(double operand) {
-                    return baseWeight + operand;
+                    return getBaseWeight() + operand;
                 }
             }, new UnaryOperator<String>() {
                 @Override
                 public String apply(String s) {
-                    return name + " " + s;
+                    return getBaseSauce() + " " + s;
                 }
             }, new DoubleUnaryOperator() {
                 @Override
                 public double applyAsDouble(double operand) {
-                    return  operand + baseDiameter;
+                    return  operand + getBaseDiameter();
                 }
             });
         }
