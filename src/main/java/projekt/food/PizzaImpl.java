@@ -195,7 +195,17 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
          */
         @Override
         public PizzaImpl create(List list) {
-            return null;
+            String sauce=baseSauce;
+            BigDecimal price= basePrice;
+            double weight = baseWeight;
+            FoodType<PizzaImpl, PizzaImpl.Config> foodType=getFoodType();
+            double diameter = getBaseDiameter();
+            try {
+                return new PizzaImpl(sauce, price, weight, new Variant<PizzaImpl, Config>(getName(), foodType, price, weight, diameter, sauce), list, diameter);
+            }catch (Exception e){
+                System.out.println("Heute ist Ruhetag, weswegen kein Essen bestellt werden kann");
+                return null;
+            }
         }
 
         /**
