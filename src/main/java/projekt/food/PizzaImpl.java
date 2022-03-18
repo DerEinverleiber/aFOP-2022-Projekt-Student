@@ -194,7 +194,7 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
          * @return An instance of {@link Food} based on the values from this variant and configured by the provided extras
          */
         @Override
-        public Food create(List list) {
+        public PizzaImpl create(List list) {
             return null;
         }
 
