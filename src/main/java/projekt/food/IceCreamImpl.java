@@ -85,6 +85,13 @@ public class IceCreamImpl implements IceCream {
         private UnaryOperator<BigDecimal> priceMutator;
         private DoubleUnaryOperator weightMutator;
         private UnaryOperator<String> unaryOperator;
+
+        /**
+         * The constructor initializes all parameters
+         * @param priceMutator the price mutator
+         * @param weightMutator the weight mutator
+         * @param unaryOperator the unary operator
+         */
         private Config(UnaryOperator<BigDecimal> priceMutator, DoubleUnaryOperator weightMutator, UnaryOperator<String> unaryOperator) {
             this.priceMutator = priceMutator;
             this.weightMutator = weightMutator;

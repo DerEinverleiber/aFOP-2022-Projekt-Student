@@ -59,6 +59,14 @@ public class PastaImpl extends AbstractSaucable implements Pasta {
 
     private static class Config extends AbstractSaucable.Config implements Pasta.Config {
         private DoubleUnaryOperator unaryOperator;
+
+        /**
+         * The constructor initializes all parameters
+         * @param priceMutator the price mutator
+         * @param weightMutator the weight mutator
+         * @param sauceOperator the sauce operator
+         * @param unaryOperator the unary operator
+         */
         private Config(UnaryOperator<BigDecimal> priceMutator, DoubleUnaryOperator weightMutator, UnaryOperator<String> sauceOperator, DoubleUnaryOperator unaryOperator) {
             super(priceMutator, weightMutator, sauceOperator);
             this.unaryOperator = unaryOperator;

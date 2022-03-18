@@ -24,6 +24,9 @@ public final class FoodTypes {
 
     public static final Map<String,FoodType> ALL = new HashMap<>();
 
+    /**
+     * initialize ALL
+     */
     static {
         ALL.put("Pizza",PIZZA);
         ALL.put("Pasta",PASTA);
