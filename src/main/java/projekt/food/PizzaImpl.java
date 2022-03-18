@@ -89,7 +89,7 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
         }
     }
 
-    static class Variant<F extends PizzaImpl,C extends Config> implements Food.Variant<PizzaImpl,Config>{
+    static class Variant<F extends PizzaImpl,C extends Config> implements Pizza.Variant{
         /**
          * The constructor initializes the parameters
          * @param name the name
@@ -97,16 +97,20 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
          * @param basePrice the basePrice
          * @param baseWeight the baseWeight
          */
-        public Variant(String name, FoodType<PizzaImpl, PizzaImpl.Config> foodType, BigDecimal basePrice, double baseWeight){
+        public Variant(String name, FoodType<PizzaImpl, PizzaImpl.Config> foodType, BigDecimal basePrice, double baseWeight, double baseDiameter, String baseSauce){
             this.name = name;
             this.foodType=foodType;
             this.basePrice=basePrice;
             this.baseWeight=baseWeight;
+            this.baseDiameter = baseDiameter;
+            this.baseSauce = baseSauce;
         }
         private final String name;
         private final FoodType<PizzaImpl, PizzaImpl.Config> foodType;
         private final BigDecimal basePrice;
         private final double baseWeight;
+        private final double baseDiameter;
+        private final String baseSauce;
 
         /**
          * The name of this variant.
@@ -173,6 +177,11 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
                 public String apply(String s) {
                     return name + " " + s;
                 }
+            }, new DoubleUnaryOperator() {
+                @Override
+                public double applyAsDouble(double operand) {
+                    return  operand + baseDiameter;
+                }
             });
         }
 
@@ -180,19 +189,33 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
          * Creates a new instance of {@link Food} described by this variant, its base values and modifications defined by the
          * provided list of {@link Extra Extras}.
          *
-         * <p>
-         * The provided extras are applied to an instance of {@link Config}. After this config has
-         * been fully "configured" by the extras, the base values from this variant are supplied to the config's mutators to
-         * calculate the food's concrete values. Providing an empty list will create a food with the base values for this
-         * variant.
-         * </p>
          *
-         * @param extras The list of {@link Extra Extras} to configure the resultant {@link Food}
+         * @param list The list of {@link Extra Extras} to configure the resultant {@link Food}
          * @return An instance of {@link Food} based on the values from this variant and configured by the provided extras
          */
         @Override
-        public PizzaImpl create(List<? extends Extra<? super Config>> extras) {
+        public Food create(List list) {
             return null;
+        }
+
+        /**
+         * This method returns the base diameter
+         *
+         * @return baseDiameter as double
+         */
+        @Override
+        public double getBaseDiameter() {
+            return baseDiameter;
+        }
+
+        /**
+         * Returns the baseSauce
+         *
+         * @return baseSauce as String
+         */
+        @Override
+        public String getBaseSauce() {
+            return baseSauce;
         }
     }
 }
