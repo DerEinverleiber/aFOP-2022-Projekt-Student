@@ -2,6 +2,7 @@ package projekt.food;
 
 import projekt.food.Food.Config;
 
+import java.math.BigDecimal;
 import java.util.function.Consumer;
 
 public class ExtraImpl<C extends Food.Config> implements Extra<C>{
@@ -50,7 +51,6 @@ public class ExtraImpl<C extends Food.Config> implements Extra<C>{
      */
     @Override
     public void apply(Food.Config config) {
-        //TODO
-        //config.price();
+        configMutator.accept((C) config);
     }
 }
