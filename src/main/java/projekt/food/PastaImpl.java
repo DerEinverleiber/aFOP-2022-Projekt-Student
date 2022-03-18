@@ -119,6 +119,11 @@ public class PastaImpl extends AbstractSaucable implements Pasta {
             this.baseSauce = baseSauce;
         }
 
+        public static final Variant<PastaImpl,Config> SPAGHETTI = new Variant<PastaImpl,Config>("Spaghetti", FoodTypes.PASTA,BigDecimal.valueOf(12.5),0.2,2,null);
+        public static final Variant<PastaImpl,Config> RIGATONI = new Variant<PastaImpl,Config>("Rigatoni", FoodTypes.PASTA,BigDecimal.valueOf(11.5),0.2,10,null);
+        public static final Variant<PastaImpl,Config> RAVIOLI = new Variant<PastaImpl,Config>("Ravioli", FoodTypes.PASTA,BigDecimal.valueOf(12.5),0.2,40,null);
+        public static final Variant<PastaImpl,Config> FUSILLI = new Variant<PastaImpl,Config>("Fusilli", FoodTypes.PASTA,BigDecimal.valueOf(12.5),0.2,15,null);
+
         /**
          * The name of this variant.
          *

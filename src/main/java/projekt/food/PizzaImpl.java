@@ -112,10 +112,10 @@ public class PizzaImpl extends AbstractSaucable implements Pizza {
         private final double baseDiameter;
         private final String baseSauce;
 
-        static final Pizza.Variant<PizzaImpl,Config> MARGHERITA= new Variant<PizzaImpl,Config>("Margherita",FoodTypes.PIZZA,BigDecimal.valueOf(9.75),0.8,30,"Tomato");
-        static final Pizza.Variant<PizzaImpl,Config> HAWAII= new Variant<PizzaImpl,Config>("Hawaii",FoodTypes.PIZZA,BigDecimal.valueOf(13.75),1,30,"Tomato");
-        static final Pizza.Variant<PizzaImpl,Config> RUCOLA= new Variant<PizzaImpl,Config>("Rucola",FoodTypes.PIZZA,BigDecimal.valueOf(14.50),0.9,30,"Tomato");
-        static final Pizza.Variant<PizzaImpl,Config> BBQ= new Variant<PizzaImpl,Config>("BBQ",FoodTypes.PIZZA,BigDecimal.valueOf(14.50),1.1,30,"BBQ");
+        public static final Pizza.Variant<PizzaImpl,Config> MARGHERITA= new Variant<PizzaImpl,Config>("Margherita",FoodTypes.PIZZA,BigDecimal.valueOf(9.75),0.8,30,"Tomato");
+        public static final Pizza.Variant<PizzaImpl,Config> HAWAII= new Variant<PizzaImpl,Config>("Hawaii",FoodTypes.PIZZA,BigDecimal.valueOf(13.75),1,30,"Tomato");
+        public static final Pizza.Variant<PizzaImpl,Config> RUCOLA= new Variant<PizzaImpl,Config>("Rucola",FoodTypes.PIZZA,BigDecimal.valueOf(14.50),0.9,30,"Tomato");
+        public static final Pizza.Variant<PizzaImpl,Config> BBQ= new Variant<PizzaImpl,Config>("BBQ",FoodTypes.PIZZA,BigDecimal.valueOf(14.50),1.1,30,"BBQ");
         /**
          * The name of this variant.
          *

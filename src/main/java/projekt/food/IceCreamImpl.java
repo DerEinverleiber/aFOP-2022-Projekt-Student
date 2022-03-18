@@ -179,7 +179,7 @@ public class IceCreamImpl implements IceCream {
             return unaryOperator;
         }
     }
-    static class Variant<F extends IceCream,C extends Config> implements Food.Variant<IceCreamImpl,IceCreamImpl.Config> {
+    static class Variant<F extends IceCream,C extends Config> implements IceCream.Variant<IceCreamImpl,IceCreamImpl.Config> {
         /**
          * The constructor initializes the parameters
          * @param name the name
@@ -187,17 +187,23 @@ public class IceCreamImpl implements IceCream {
          * @param basePrice the basePrice
          * @param baseWeight the baseWeight
          */
-        public Variant(String name,FoodType<IceCreamImpl, Config> foodType,BigDecimal basePrice,double baseWeight){
+        public Variant(String name,FoodType<IceCreamImpl, Config> foodType,BigDecimal basePrice,double baseWeight, String flavor){
             this.name = name;
             this.foodType=foodType;
             this.basePrice=basePrice;
             this.baseWeight=baseWeight;
+            this.flavor= flavor;
         }
         private final String name;
         private final FoodType<IceCreamImpl, Config> foodType;
         private final BigDecimal basePrice;
         private final double baseWeight;
+        private final String flavor;
 
+        public static final Variant<IceCream,Config> VANILLA = new Variant<IceCream,Config>("Vanilla", FoodTypes.ICE_CREAM,BigDecimal.valueOf(1.5),0.2,"Vanilla");
+        public static final Variant<IceCream,Config> STRAWBERRY = new Variant<IceCream,Config>("Strawberry", FoodTypes.ICE_CREAM,BigDecimal.valueOf(1.5),0.2,"Strawberry");
+        public static final Variant<IceCream,Config> CHOCOLATE = new Variant<IceCream,Config>("Chocolate", FoodTypes.ICE_CREAM,BigDecimal.valueOf(1.5),0.2,"Chocolate");
+        public static final Variant<IceCream,Config> STRACCIATELLA = new Variant<IceCream,Config>("Stracciatella", FoodTypes.ICE_CREAM,BigDecimal.valueOf(1.5),0.2,"Stracciatella");
         /**
          * The name of this variant.
          *
@@ -276,6 +282,16 @@ public class IceCreamImpl implements IceCream {
         @Override
         public IceCreamImpl create(List<? extends Extra<? super Config>> extras) {
             return null;
+        }
+
+        /**
+         * This method returns the base flavor
+         *
+         * @return baseFlavor as String
+         */
+        @Override
+        public String getBaseFlavor() {
+            return flavor;
         }
     }
 }
